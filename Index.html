@@ -186,9 +186,21 @@
       width: 40px;
       height: 2px;
       background: var(--ink);
-      margin: 40px 0;
+      margin: 40px 0 22px;
       opacity: 0;
       animation: fade 0.5s 0.5s forwards;
+    }
+
+    .h-subhead {
+      font-family: var(--fd);
+      font-size: clamp(24px, 2.2vw, 34px);
+      line-height: 1.25;
+      color: var(--ink);
+      font-weight: 500;
+      max-width: 540px;
+      margin-bottom: 22px;
+      opacity: 0;
+      animation: up 0.7s 0.55s forwards;
     }
 
     .h-sub {
@@ -196,9 +208,9 @@
       font-weight: 300;
       color: var(--muted);
       line-height: 1.8;
-      max-width: 480px;
+      max-width: 500px;
       opacity: 0;
-      animation: up 0.7s 0.6s forwards;
+      animation: up 0.7s 0.65s forwards;
     }
 
     .h-sub strong {
@@ -213,7 +225,7 @@
       gap: 28px;
       flex-wrap: wrap;
       opacity: 0;
-      animation: up 0.7s 0.75s forwards;
+      animation: up 0.7s 0.8s forwards;
     }
 
     .btn-d,
@@ -1228,6 +1240,10 @@
         font-size: clamp(46px, 15vw, 68px);
       }
 
+      .h-subhead {
+        font-size: 24px;
+      }
+
       .h-sub {
         font-size: 16px;
       }
@@ -1306,9 +1322,12 @@
       <div class="h-left">
         <div class="h-kick">1:1 Coaching &nbsp;·&nbsp; Founding Rate Open</div>
         <h1 class="h-head">
-          A physique system<br />for men with<br /><span class="it">real responsibilities.</span>
+          12<br />Weeks<br /><span class="it">to War.</span>
         </h1>
         <div class="h-div"></div>
+        <p class="h-subhead">
+          A physique system for men with real responsibilities.
+        </p>
         <p class="h-sub">
           Built for busy fathers and working men who want to cut body fat, build an athletic physique, and follow a system that holds up in real life.<br /><br />
           Custom training. Custom nutrition. Weekly accountability. <strong>Built around The No Drift Method.</strong>
