@@ -1,1891 +1,776 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta
-    name="description"
-    content="12 Weeks to War is 1:1 coaching for busy fathers and working men. Custom training, custom nutrition, and weekly accountability built around The No Drift Method."
-  />
-  <title>12 Weeks to War | 1:1 Coaching for Busy Men</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;500;600;700&family=Bitter:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet"
-  />
-
-  <style>
-    :root {
-      --paper: #060B16;
-      --off: #0A1222;
-      --rule: #14233A;
-      --mid: #5A6C88;
-      --muted: #8FA1BB;
-      --ink: #E6EEF9;
-      --white: #F4F8FD;
-      --accent: #23466F;
-      --success: #4D6B4A;
-      --fd: "Bitter", Georgia, serif;
-      --fb: "Barlow", system-ui, sans-serif;
-      --fl: "Barlow Condensed", system-ui, sans-serif;
-      --nav-h: 64px;
-    }
-
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      background: var(--paper);
-      color: var(--ink);
-      font-family: var(--fb);
-      font-weight: 300;
-      line-height: 1.6;
-      overflow-x: hidden;
-      text-rendering: optimizeLegibility;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 9999;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-    }
-
-    nav.wn {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 500;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 56px;
-      height: var(--nav-h);
-      background: rgba(6, 11, 22, 0.94);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--rule);
-    }
-
-    .wn-logo {
-      font-family: var(--fd);
-      font-weight: 700;
-      font-size: 18px;
-      letter-spacing: 0.01em;
-      color: var(--ink);
-      text-decoration: none;
-      white-space: nowrap;
-    }
-
-    .wn-logo span {
-      font-weight: 400;
-      color: var(--mid);
-    }
-
-    .wn-r {
-      display: flex;
-      align-items: center;
-      gap: 36px;
-    }
-
-    .wn-link {
-      font-family: var(--fl);
-      font-weight: 600;
-      font-size: 12px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--muted);
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
-
-    .wn-link:hover {
-      color: var(--ink);
-    }
-
-    .wn-cta {
-      font-family: var(--fl);
-      font-weight: 700;
-      font-size: 11px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--paper);
-      background: var(--ink);
-      padding: 10px 26px;
-      text-decoration: none;
-      transition: background 0.2s ease, transform 0.15s ease;
-    }
-
-    .wn-cta:hover {
-      background: var(--white);
-      transform: translateY(-1px);
-    }
-
-    .hero {
-      min-height: 100vh;
-      display: grid;
-      grid-template-columns: 58% 42%;
-      padding-top: var(--nav-h);
-    }
-
-    .h-left {
-      padding: 88px 64px 88px 56px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      border-right: 1px solid var(--rule);
-    }
-
-    .h-kick {
-      font-family: var(--fl);
-      font-weight: 700;
-      font-size: 11px;
-      letter-spacing: 0.32em;
-      text-transform: uppercase;
-      color: var(--mid);
-      margin-bottom: 28px;
-      opacity: 0;
-      animation: up 0.7s 0.1s forwards;
-    }
-
-    .h-head {
-      font-family: var(--fd);
-      font-weight: 800;
-      font-size: clamp(58px, 8vw, 106px);
-      line-height: 0.95;
-      letter-spacing: -0.02em;
-      color: var(--ink);
-      opacity: 0;
-      animation: up 0.8s 0.25s forwards;
-    }
-
-    .h-head .it {
-      font-style: normal;
-      font-weight: 500;
-      color: var(--muted);
-      display: block;
-    }
-
-    .h-div {
-      width: 40px;
-      height: 2px;
-      background: var(--ink);
-      margin: 40px 0 22px;
-      opacity: 0;
-      animation: fade 0.5s 0.5s forwards;
-    }
-
-    .h-subhead {
-      font-family: var(--fd);
-      font-size: clamp(24px, 2.2vw, 34px);
-      line-height: 1.25;
-      color: var(--ink);
-      font-weight: 500;
-      max-width: 540px;
-      margin-bottom: 22px;
-      opacity: 0;
-      animation: up 0.7s 0.55s forwards;
-    }
-
-    .h-sub {
-      font-size: 17px;
-      font-weight: 300;
-      color: var(--muted);
-      line-height: 1.8;
-      max-width: 500px;
-      opacity: 0;
-      animation: up 0.7s 0.65s forwards;
-    }
-
-    .h-sub strong {
-      color: var(--ink);
-      font-weight: 500;
-    }
-
-    .h-ctas {
-      margin-top: 48px;
-      display: flex;
-      align-items: center;
-      gap: 28px;
-      flex-wrap: wrap;
-      opacity: 0;
-      animation: up 0.7s 0.8s forwards;
-    }
-
-    .btn-d,
-    .btn-sub {
-      font-family: var(--fl);
-      font-weight: 700;
-      font-size: 12px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      background: var(--ink);
-      color: var(--paper);
-      padding: 15px 40px;
-      text-decoration: none;
-      display: inline-block;
-      border: none;
-      transition: background 0.2s ease, transform 0.15s ease;
-      cursor: pointer;
-    }
-
-    .btn-d:hover,
-    .btn-sub:hover {
-      background: var(--white);
-      color: var(--paper);
-      transform: translateY(-1px);
-    }
-
-    .btn-t {
-      font-family: var(--fl);
-      font-weight: 600;
-      font-size: 12px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--muted);
-      text-decoration: none;
-      border-bottom: 1px solid var(--rule);
-      padding-bottom: 2px;
-      transition: color 0.2s ease, border-color 0.2s ease;
-    }
-
-    .btn-t:hover {
-      color: var(--ink);
-      border-color: var(--mid);
-    }
-
-    .h-right {
-      background: var(--off);
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 56px 56px 72px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .h-ghost {
-      font-family: var(--fd);
-      font-weight: 800;
-      font-size: clamp(180px, 24vw, 320px);
-      line-height: 1;
-      color: transparent;
-      -webkit-text-stroke: 1px var(--rule);
-      position: absolute;
-      bottom: -24px;
-      right: -8px;
-      letter-spacing: -0.04em;
-      pointer-events: none;
-      opacity: 0;
-      animation: fade 1s 1s forwards;
-    }
-
-    .h-stats {
-      position: relative;
-      z-index: 2;
-      opacity: 0;
-      animation: up 0.7s 0.55s forwards;
-    }
-
-    .h-stat {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 20px;
-      padding: 22px 0;
-      border-bottom: 1px solid var(--rule);
-    }
-
-    .h-stat:first-child {
-      border-top: 1px solid var(--rule);
-    }
-
-    .sk {
-      font-family: var(--fl);
-      font-weight: 600;
-      font-size: 11px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--mid);
-    }
-
-    .sv {
-      font-family: var(--fd);
-      font-weight: 600;
-      font-size: 20px;
-      color: var(--ink);
-      text-align: right;
-    }
-
-    .tick {
-      background: #050914;
-      padding: 13px 0;
-      overflow: hidden;
-      white-space: nowrap;
-    }
-
-    .tick-t {
-      display: inline-block;
-      animation: scroll 28s linear infinite;
-      font-family: var(--fl);
-      font-weight: 600;
-      font-size: 11px;
-      letter-spacing: 0.26em;
-      text-transform: uppercase;
-      color: var(--mid);
-    }
-
-    .tick-t .sp {
-      color: #304561;
-      margin: 0 24px;
-      font-size: 8px;
-    }
-
-    section {
-      padding: 108px 56px;
-      scroll-margin-top: calc(var(--nav-h) + 18px);
-    }
-
-    .ey {
-      font-family: var(--fl);
-      font-weight: 700;
-      font-size: 11px;
-      letter-spacing: 0.32em;
-      text-transform: uppercase;
-      color: var(--mid);
-      margin-bottom: 18px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .ey::before {
-      content: "";
-      display: inline-block;
-      width: 24px;
-      height: 1px;
-      background: var(--rule);
-      flex-shrink: 0;
-    }
-
-    .disp {
-      font-family: var(--fd);
-      font-weight: 800;
-      font-size: clamp(40px, 5.5vw, 72px);
-      line-height: 0.98;
-      letter-spacing: -0.02em;
-      color: var(--ink);
-      margin-bottom: 56px;
-    }
-
-    .disp .it {
-      font-weight: 500;
-      font-style: normal;
-      color: var(--muted);
-    }
-
-    #problem,
-    #forwho,
-    #nodrift {
-      background: var(--off);
-      border-top: 1px solid var(--rule);
-      border-bottom: 1px solid var(--rule);
-    }
-
-    .prob-g {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-    }
-
-    .prob-b {
-      font-size: 18px;
-      font-weight: 300;
-      color: var(--muted);
-      line-height: 1.85;
-      max-width: 620px;
-    }
-
-    .prob-b p + p {
-      margin-top: 20px;
-    }
-
-    .prob-b strong {
-      color: var(--ink);
-      font-weight: 500;
-    }
-
-    .pull {
-      font-family: var(--fd);
-      font-weight: 500;
-      font-size: clamp(22px, 2.6vw, 34px);
-      line-height: 1.4;
-      color: var(--ink);
-      padding-left: 28px;
-      border-left: 3px solid var(--ink);
-      margin-bottom: 40px;
-    }
-
-    .tr-list,
-    .fw-list,
-    .pc-list,
-    .ms,
-    .nd-list {
-      list-style: none;
-    }
-
-    .tr {
-      display: flex;
-      align-items: flex-start;
-      gap: 20px;
-      padding: 16px 0;
-      border-bottom: 1px solid var(--rule);
-      opacity: 0;
-      transform: translateY(12px);
-      transition: opacity 0.45s ease, transform 0.45s ease;
-    }
-
-    .tr:first-child {
-      border-top: 1px solid var(--rule);
-    }
-
-    .tr.vis {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .tr-n {
-      font-family: var(--fl);
-      font-weight: 600;
-      font-size: 10px;
-      letter-spacing: 0.15em;
-      color: var(--rule);
-      flex-shrink: 0;
-      padding-top: 3px;
-    }
-
-    .tr-t {
-      font-size: 15px;
-      color: var(--muted);
-      line-height: 1.55;
-    }
-
-    #offer,
-    #process,
-    #pricing,
-    #apply {
-      background: var(--paper);
-    }
-
-    .off-top {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      margin-bottom: 56px;
-      align-items: end;
-    }
-
-    .off-intro {
-      font-size: 17px;
-      color: var(--muted);
-      line-height: 1.75;
-      font-weight: 300;
-      max-width: 520px;
-    }
-
-    .off-g {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      border-top: 1px solid var(--rule);
-      border-left: 1px solid var(--rule);
-    }
-
-    .oc {
-      border-right: 1px solid var(--rule);
-      border-bottom: 1px solid var(--rule);
-      padding: 28px 24px 30px;
-      opacity: 0;
-      transform: translateY(16px);
-      transition: opacity 0.45s ease, transform 0.45s ease, background 0.2s ease;
-    }
-
-    .oc.vis {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .oc:hover {
-      background: #0A1222;
-    }
-
-    .oc-n {
-      font-family: var(--fl);
-      font-weight: 600;
-      font-size: 10px;
-      letter-spacing: 0.18em;
-      color: var(--rule);
-      margin-bottom: 14px;
-    }
-
-    .oc-h {
-      font-family: var(--fd);
-      font-weight: 700;
-      font-size: 17px;
-      color: var(--ink);
-      margin-bottom: 8px;
-      line-height: 1.2;
-    }
-
-    .oc-b {
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.6;
-      font-weight: 300;
-    }
-
-    .nd-wrap {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px;
-      align-items: start;
-    }
-
-    .nd-copy {
-      max-width: 640px;
-      color: var(--muted);
-      font-size: 17px;
-      line-height: 1.8;
-    }
-
-    .nd-copy strong {
-      color: var(--ink);
-      font-weight: 500;
-    }
-
-    .nd-panel {
-      border: 1px solid var(--rule);
-      background: rgba(0, 0, 0, 0.08);
-      padding: 26px 24px;
-    }
-
-    .nd-list li {
-      padding: 14px 0;
-      border-bottom: 1px solid var(--rule);
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.6;
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-    }
-
-    .nd-list li:last-child {
-      border-bottom: none;
-    }
-
-    .nd-list li .num {
-      font-family: var(--fl);
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      color: var(--mid);
-      flex-shrink: 0;
-      margin-top: 4px;
-    }
-
-    .fw-g {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2px;
-    }
-
-    .fw-c {
-      background: var(--off);
-      padding: 40px 44px 48px;
-    }
-
-    .fw-label {
-      font-family: var(--fl);
-      font-weight: 700;
-      font-size: 10px;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--mid);
-      padding-bottom: 16px;
-      border-bottom: 1px solid var(--rule);
-    }
-
-    .fw-list li {
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-      padding: 14px 0;
-      border-bottom: 1px solid var(--rule);
-      font-size: 15px;
-      color: var(--muted);
-      line-height: 1.5;
-    }
-
-    .fm {
-      font-family: var(--fl);
-      font-size: 12px;
-      font-weight: 700;
-      flex-shrink: 0;
-      color: var(--mid);
-      margin-top: 1px;
-    }
-
-    .pr-rows {
-      max-width: 760px;
-    }
-
-    .pr {
-      display: grid;
-      grid-template-columns: 88px 1fr;
-      border-bottom: 1px solid var(--rule);
-      opacity: 0;
-      transform: translateY(14px);
-      transition: opacity 0.45s ease, transform 0.45s ease;
-    }
-
-    .pr:first-child {
-      border-top: 1px solid var(--rule);
-    }
-
-    .pr.vis {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .pr:hover {
-      background: #0A1222;
-    }
-
-    .pr-nw {
-      padding: 32px 0;
-      border-right: 1px solid var(--rule);
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-    }
-
-    .pr-n {
-      font-family: var(--fl);
-      font-weight: 500;
-      font-size: 11px;
-      letter-spacing: 0.18em;
-      color: var(--rule);
-    }
-
-    .pr-b {
-      padding: 32px 0 32px 40px;
-    }
-
-    .pr-h {
-      font-family: var(--fd);
-      font-weight: 700;
-      font-size: 20px;
-      color: var(--ink);
-      margin-bottom: 6px;
-    }
-
-    .pr-t {
-      font-size: 15px;
-      color: var(--muted);
-      line-height: 1.65;
-      font-weight: 300;
-      max-width: 620px;
-    }
-
-    .px-g {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 72px;
-      align-items: start;
-    }
-
-    .pc {
-      border: 1px solid var(--rule);
-      background: #07101F;
-      padding: 48px 44px;
-    }
-
-    .pc-badge {
-      font-family: var(--fl);
-      font-weight: 700;
-      font-size: 10px;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: var(--ink);
-      background: #14233A;
-      display: inline-block;
-      padding: 7px 16px;
-      margin-bottom: 32px;
-    }
-
-    .pc-amt {
-      font-family: var(--fd);
-      font-weight: 800;
-      font-size: 92px;
-      line-height: 1;
-      color: var(--ink);
-      letter-spacing: -0.03em;
-    }
-
-    .pc-amt sup {
-      font-size: 30px;
-      font-weight: 400;
-      vertical-align: super;
-      color: var(--muted);
-    }
-
-    .pc-per {
-      font-family: var(--fl);
-      font-weight: 500;
-      font-size: 11px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--mid);
-      margin-top: 10px;
-      margin-bottom: 32px;
-    }
-
-    .pc-list {
-      margin-bottom: 36px;
-    }
-
-    .pc-list li {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 11px 0;
-      border-bottom: 1px solid var(--rule);
-      font-size: 14px;
-      color: var(--muted);
-      font-weight: 300;
-    }
-
-    .pc-list li::before {
-      content: "";
-      width: 4px;
-      height: 4px;
-      background: #43648D;
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-
-    .btn-p {
-      font-family: var(--fl);
-      font-weight: 700;
-      font-size: 12px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--paper);
-      background: var(--ink);
-      padding: 17px 40px;
-      text-decoration: none;
-      display: block;
-      text-align: center;
-      transition: background 0.2s ease, transform 0.15s ease;
-    }
-
-    .btn-p:hover {
-      background: var(--white);
-      transform: translateY(-1px);
-    }
-
-    .pc-note {
-      margin-top: 16px;
-      font-size: 12px;
-      color: var(--muted);
-      line-height: 1.6;
-      font-weight: 300;
-    }
-
-    .px-r {
-      padding-top: 2px;
-    }
-
-    .px-r p {
-      font-size: 16px;
-      color: var(--muted);
-      line-height: 1.8;
-      margin-bottom: 18px;
-      font-weight: 300;
-      max-width: 560px;
-    }
-
-    .px-r strong {
-      color: var(--ink);
-      font-weight: 400;
-    }
-
-    .m {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 20px;
-      padding: 16px 0;
-      border-bottom: 1px solid var(--rule);
-    }
-
-    .m-l {
-      font-family: var(--fl);
-      font-size: 10px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--mid);
-    }
-
-    .m-v {
-      font-family: var(--fd);
-      font-weight: 600;
-      font-size: 19px;
-      color: var(--muted);
-      white-space: nowrap;
-    }
-
-    .m-v.now {
-      color: var(--ink);
-    }
-
-    .ap-g {
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 80px;
-      align-items: start;
-    }
-
-    .ap-side p {
-      font-size: 15px;
-      color: var(--muted);
-      line-height: 1.75;
-      margin-bottom: 16px;
-      font-weight: 300;
-    }
-
-    .ap-side strong {
-      color: var(--ink);
-      font-weight: 500;
-    }
-
-    .ap-note {
-      margin-top: 28px;
-      padding: 20px 22px;
-      background: var(--off);
-      border: 1px solid var(--rule);
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.7;
-      font-weight: 300;
-    }
-
-    .fs {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .fsec {
-      border: 1px solid var(--rule);
-      overflow: hidden;
-      background: var(--off);
-    }
-
-    .fsec-h {
-      padding: 20px 28px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      cursor: pointer;
-      user-select: none;
-      background: var(--off);
-      transition: background 0.15s ease;
-    }
-
-    .fsec-h:hover {
-      background: #0D1830;
-    }
-
-    .fsec-hl {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      min-width: 0;
-    }
-
-    .fsec-n {
-      font-family: var(--fl);
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.18em;
-      color: var(--mid);
-      flex-shrink: 0;
-    }
-
-    .fsec-name {
-      font-family: var(--fl);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--ink);
-    }
-
-    .fsec-tog {
-      font-size: 20px;
-      color: var(--mid);
-      transition: transform 0.25s ease;
-      line-height: 1;
-      font-weight: 300;
-      flex-shrink: 0;
-    }
-
-    .fsec.open .fsec-tog {
-      transform: rotate(45deg);
-    }
-
-    .fsec-b {
-      display: none;
-      padding: 28px 28px 36px;
-    }
-
-    .fsec.open .fsec-b {
-      display: block;
-    }
-
-    .fr {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      margin-bottom: 14px;
-    }
-
-    .fr.one {
-      grid-template-columns: 1fr;
-    }
-
-    .fr.three {
-      grid-template-columns: 1fr 1fr 1fr;
-    }
-
-    .ff {
-      display: flex;
-      flex-direction: column;
-      gap: 7px;
-      min-width: 0;
-    }
-
-    .ff label {
-      font-family: var(--fl);
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--mid);
-    }
-
-    .ff input,
-    .ff select,
-    .ff textarea {
-      background: #08101F;
-      border: 1px solid var(--rule);
-      color: var(--ink);
-      font-family: var(--fb);
-      font-size: 15px;
-      font-weight: 300;
-      padding: 12px 15px;
-      outline: none;
-      transition: border-color 0.2s ease, background 0.2s ease;
-      width: 100%;
-      appearance: none;
-      -webkit-appearance: none;
-      border-radius: 0;
-    }
-
-    .ff input:focus,
-    .ff select:focus,
-    .ff textarea:focus {
-      border-color: var(--mid);
-      background: #0D1830;
-    }
-
-    .ff input::placeholder,
-    .ff textarea::placeholder {
-      color: #5E708C;
-      font-style: italic;
-    }
-
-    .ff textarea {
-      resize: vertical;
-      min-height: 92px;
-      line-height: 1.6;
-    }
-
-    .ff select {
-      cursor: pointer;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235A6C88' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 14px center;
-      padding-right: 36px;
-    }
-
-    .f-foot {
-      margin-top: 3px;
-      padding: 36px;
-      background: var(--off);
-      border: 1px solid var(--rule);
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 18px;
-    }
-
-    .f-foot p {
-      font-size: 13px;
-      color: var(--mid);
-      line-height: 1.7;
-      max-width: 460px;
-      font-weight: 300;
-    }
-
-    footer.ft {
-      background: #050914;
-      border-top: 1px solid var(--rule);
-      padding: 52px 56px;
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      gap: 32px;
-      align-items: center;
-    }
-
-    .fl-logo {
-      font-family: var(--fd);
-      font-weight: 700;
-      font-size: 22px;
-      color: var(--ink);
-    }
-
-    .fl-logo span {
-      font-weight: 400;
-      color: var(--mid);
-    }
-
-    .fl-mid,
-    .fl-r {
-      font-family: var(--fl);
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      color: var(--mid);
-      line-height: 1.9;
-      text-transform: uppercase;
-    }
-
-    .fl-mid {
-      letter-spacing: 0.24em;
-      text-align: center;
-    }
-
-    .fl-r {
-      text-align: right;
-    }
-
-    @keyframes up {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes fade {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
-    }
-
-    @keyframes scroll {
-      from {
-        transform: translateX(0);
-      }
-      to {
-        transform: translateX(-50%);
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-
-      *,
-      *::before,
-      *::after {
-        animation: none !important;
-        transition: none !important;
-      }
-
-      .tick-t {
-        animation: none !important;
-      }
-    }
-
-    @media (max-width: 960px) {
-      nav.wn {
-        padding: 0 24px;
-      }
-
-      section {
-        padding: 72px 24px;
-      }
-
-      .hero,
-      .prob-g,
-      .off-top,
-      .nd-wrap,
-      .px-g,
-      .ap-g,
-      .fw-g {
-        grid-template-columns: 1fr;
-      }
-
-      .h-left {
-        padding: 80px 24px 48px;
-        border-right: none;
-      }
-
-      .h-right {
-        display: none;
-      }
-
-      .off-g {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .fr,
-      .fr.three {
-        grid-template-columns: 1fr;
-      }
-
-      footer.ft {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-
-      .fl-r,
-      .fl-mid {
-        text-align: center;
-      }
-    }
-
-    @media (max-width: 580px) {
-      nav.wn {
-        padding: 0 16px;
-      }
-
-      section {
-        padding: 64px 16px;
-      }
-
-      .off-g {
-        grid-template-columns: 1fr;
-      }
-
-      .wn-link {
-        display: none;
-      }
-
-      .wn-r {
-        gap: 12px;
-      }
-
-      .wn-cta {
-        padding: 10px 18px;
-        font-size: 10px;
-      }
-
-      .h-left {
-        padding: 64px 16px 40px;
-      }
-
-      .h-kick {
-        letter-spacing: 0.22em;
-      }
-
-      .h-head {
-        font-size: clamp(46px, 15vw, 68px);
-      }
-
-      .h-subhead {
-        font-size: 24px;
-      }
-
-      .h-sub {
-        font-size: 16px;
-      }
-
-      .h-ctas {
-        gap: 16px;
-        align-items: flex-start;
-      }
-
-      .btn-d,
-      .btn-sub {
-        width: 100%;
-        text-align: center;
-        padding: 15px 20px;
-      }
-
-      .btn-t {
-        font-size: 11px;
-      }
-
-      .pc {
-        padding: 36px 22px;
-      }
-
-      .pc-amt {
-        font-size: 72px;
-      }
-
-      .fsec-h {
-        padding: 18px 18px;
-      }
-
-      .fsec-b {
-        padding: 22px 18px 28px;
-      }
-
-      .f-foot {
-        padding: 28px 18px;
-      }
-
-      footer.ft {
-        padding: 40px 16px;
-      }
-
-      .disp {
-        margin-bottom: 40px;
-      }
-
-      .pull {
-        padding-left: 20px;
-      }
-
-      .pr {
-        grid-template-columns: 64px 1fr;
-      }
-
-      .pr-b {
-        padding: 28px 0 28px 24px;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="1:1 coaching for busy fathers and working men. Custom training, custom macros, and weekly accountability — built to get you lean and disciplined in 12 weeks.">
+<title>12 Weeks to War — 1:1 Coaching for Busy Men</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Barlow:wght@300;400;500&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+
+:root {
+–paper:  #f4f1eb;
+–off:    #eceae3;
+–rule:   #d6d2c9;
+–mid:    #b8b3a9;
+–muted:  #7a756e;
+–coal:   #2c2a27;
+–ink:    #131210;
+–white:  #faf8f4;
+–fd: ‘Zilla Slab’, Georgia, serif;
+–fb: ‘Barlow’, system-ui, sans-serif;
+–fl: ‘Barlow Condensed’, system-ui, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+background: var(–paper);
+color: var(–ink);
+font-family: var(–fb);
+font-weight: 300;
+line-height: 1.6;
+overflow-x: hidden;
+}
+
+/* grain */
+body::after {
+content: ‘’;
+position: fixed; inset: 0; pointer-events: none; z-index: 9999;
+background-image: url(“data:image/svg+xml,%3Csvg xmlns=‘http://www.w3.org/2000/svg’ width=‘256’ height=‘256’%3E%3Cfilter id=‘n’%3E%3CfeTurbulence type=‘fractalNoise’ baseFrequency=‘0.8’ numOctaves=‘4’ stitchTiles=‘stitch’/%3E%3CfeColorMatrix type=‘saturate’ values=‘0’/%3E%3C/filter%3E%3Crect width=‘100%25’ height=‘100%25’ filter=‘url(%23n)’ opacity=‘0.03’/%3E%3C/svg%3E”);
+}
+
+/* ── NAV ── */
+nav.wn {
+position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+display: flex; justify-content: space-between; align-items: center;
+padding: 0 56px; height: 64px;
+background: rgba(244,241,235,0.96);
+backdrop-filter: blur(12px);
+-webkit-backdrop-filter: blur(12px);
+border-bottom: 1px solid var(–rule);
+}
+.wn-logo {
+font-family: var(–fd); font-weight: 700; font-size: 17px;
+letter-spacing: 0.01em; color: var(–ink); text-decoration: none;
+}
+.wn-logo span { font-weight: 400; font-style: italic; color: var(–muted); }
+.wn-r { display: flex; align-items: center; gap: 36px; }
+.wn-link {
+font-family: var(–fl); font-weight: 500; font-size: 12px;
+letter-spacing: 0.14em; text-transform: uppercase;
+color: var(–muted); text-decoration: none; transition: color .2s;
+}
+.wn-link:hover { color: var(–ink); }
+.wn-cta {
+font-family: var(–fl); font-weight: 600; font-size: 11px;
+letter-spacing: 0.18em; text-transform: uppercase;
+color: var(–white); background: var(–ink);
+padding: 10px 26px; text-decoration: none; transition: background .2s;
+}
+.wn-cta:hover { background: var(–coal); }
+
+/* ── HERO ── */
+.hero {
+min-height: 100vh;
+display: grid; grid-template-columns: 58% 42%;
+padding-top: 64px;
+}
+.h-left {
+padding: 64px 64px 64px 56px;
+display: flex; flex-direction: column; justify-content: center;
+border-right: 1px solid var(–rule);
+}
+.h-kick {
+font-family: var(–fl); font-weight: 600; font-size: 11px;
+letter-spacing: 0.32em; text-transform: uppercase;
+color: var(–mid); margin-bottom: 28px;
+opacity: 0; animation: up .7s .1s forwards;
+}
+.h-head {
+font-family: var(–fd); font-weight: 700;
+font-size: clamp(60px, 8vw, 112px);
+line-height: 0.96; letter-spacing: -0.01em; color: var(–ink);
+opacity: 0; animation: up .8s .25s forwards;
+}
+.h-head .it { font-style: italic; font-weight: 400; color: var(–coal); display: block; }
+.h-div {
+width: 40px; height: 2px; background: var(–ink);
+margin: 40px 0; opacity: 0; animation: fade .5s .5s forwards;
+}
+.h-sub {
+font-size: 17px; font-weight: 300; color: var(–muted);
+line-height: 1.8; max-width: 440px;
+opacity: 0; animation: up .7s .6s forwards;
+}
+.h-sub strong { color: var(–coal); font-weight: 500; }
+.h-ctas {
+margin-top: 48px; display: flex; align-items: center; gap: 28px;
+opacity: 0; animation: up .7s .75s forwards;
+}
+.btn-d {
+font-family: var(–fl); font-weight: 600; font-size: 12px;
+letter-spacing: 0.2em; text-transform: uppercase;
+background: var(–ink); color: var(–white);
+padding: 15px 40px; text-decoration: none; display: inline-block;
+transition: background .2s, transform .15s;
+}
+.btn-d:hover { background: var(–coal); transform: translateY(-1px); }
+.btn-t {
+font-family: var(–fl); font-weight: 500; font-size: 12px;
+letter-spacing: 0.14em; text-transform: uppercase;
+color: var(–muted); text-decoration: none;
+border-bottom: 1px solid var(–rule); padding-bottom: 2px;
+transition: color .2s, border-color .2s;
+}
+.btn-t:hover { color: var(–ink); border-color: var(–mid); }
+.h-right {
+background: var(–off);
+display: flex; flex-direction: column;
+justify-content: flex-end; padding: 40px 56px 56px;
+position: relative; overflow: hidden;
+}
+.h-ghost {
+font-family: var(–fd); font-weight: 700;
+font-size: clamp(180px, 24vw, 340px); line-height: 1;
+color: transparent; -webkit-text-stroke: 1px var(–rule);
+position: absolute; bottom: -24px; right: -8px;
+letter-spacing: -0.04em; pointer-events: none;
+opacity: 0; animation: fade 1s 1s forwards;
+}
+.h-stats { position: relative; z-index: 2; opacity: 0; animation: up .7s .55s forwards; }
+.h-stat {
+display: flex; justify-content: space-between; align-items: baseline;
+padding: 22px 0; border-bottom: 1px solid var(–rule);
+}
+.h-stat:first-child { border-top: 1px solid var(–rule); }
+.sk {
+font-family: var(–fl); font-weight: 500; font-size: 11px;
+letter-spacing: 0.18em; text-transform: uppercase; color: var(–mid);
+}
+.sv { font-family: var(–fd); font-weight: 600; font-size: 20px; color: var(–coal); }
+
+/* ── TICKER ── */
+.tick {
+background: var(–ink); padding: 13px 0;
+overflow: hidden; white-space: nowrap;
+}
+.tick-t {
+display: inline-block;
+animation: scroll 28s linear infinite;
+font-family: var(–fl); font-weight: 500; font-size: 11px;
+letter-spacing: 0.26em; text-transform: uppercase; color: var(–mid);
+}
+.tick-t .sp { color: var(–coal); margin: 0 24px; font-size: 8px; }
+
+/* ── SECTIONS ── */
+section { padding: 80px 56px; }
+.ey {
+font-family: var(–fl); font-weight: 600; font-size: 11px;
+letter-spacing: 0.32em; text-transform: uppercase; color: var(–mid);
+margin-bottom: 12px; display: flex; align-items: center; gap: 14px;
+}
+.ey::before { content: ‘’; display: inline-block; width: 24px; height: 1px; background: var(–rule); }
+.disp {
+font-family: var(–fd); font-weight: 700;
+font-size: clamp(42px, 5.5vw, 76px);
+line-height: 0.97; letter-spacing: -0.01em; color: var(–ink); margin-bottom: 40px;
+}
+.disp .it { font-weight: 400; font-style: italic; color: var(–muted); }
+
+/* ── PROBLEM ── */
+#problem { background: var(–off); border-top: 1px solid var(–rule); border-bottom: 1px solid var(–rule); }
+.prob-g { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; }
+.prob-b { font-size: 18px; font-weight: 300; color: var(–muted); line-height: 1.85; }
+.prob-b p + p { margin-top: 22px; }
+.prob-b strong { color: var(–coal); font-weight: 500; }
+.pull {
+font-family: var(–fd); font-style: italic; font-weight: 400;
+font-size: clamp(22px, 2.6vw, 34px); line-height: 1.4; color: var(–coal);
+padding-left: 28px; border-left: 3px solid var(–ink); margin-bottom: 48px;
+}
+.tr-list { list-style: none; }
+.tr {
+display: flex; align-items: flex-start; gap: 20px;
+padding: 18px 0; border-bottom: 1px solid var(–rule);
+opacity: 0; transform: translateY(12px);
+transition: opacity .45s, transform .45s;
+}
+.tr:first-child { border-top: 1px solid var(–rule); }
+.tr.vis { opacity: 1; transform: translateY(0); }
+.tr-n { font-family: var(–fl); font-weight: 500; font-size: 10px; letter-spacing: 0.15em; color: var(–rule); flex-shrink: 0; padding-top: 3px; }
+.tr-t { font-size: 15px; color: var(–muted); line-height: 1.6; }
+
+/* ── OFFER ── */
+#offer { background: var(–paper); }
+.off-top { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; margin-bottom: 40px; align-items: end; }
+.off-intro { font-size: 17px; color: var(–muted); line-height: 1.8; font-weight: 300; }
+.off-g {
+display: grid; grid-template-columns: repeat(4, 1fr);
+border-top: 1px solid var(–rule); border-left: 1px solid var(–rule);
+}
+.oc {
+border-right: 1px solid var(–rule); border-bottom: 1px solid var(–rule);
+padding: 24px 22px 28px;
+opacity: 0; transform: translateY(16px);
+transition: opacity .45s, transform .45s, background .2s;
+}
+.oc.vis { opacity: 1; transform: translateY(0); }
+.oc:hover { background: var(–off); }
+.oc-n { font-family: var(–fl); font-weight: 500; font-size: 10px; letter-spacing: 0.18em; color: var(–rule); margin-bottom: 10px; }
+.oc-h { font-family: var(–fd); font-weight: 600; font-size: 17px; color: var(–ink); margin-bottom: 10px; line-height: 1.25; }
+.oc-b { font-size: 13px; color: var(–muted); line-height: 1.7; font-weight: 300; }
+
+/* ── FOR WHO ── */
+#forwho { background: var(–off); border-top: 1px solid var(–rule); border-bottom: 1px solid var(–rule); }
+.fw-g { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+.fw-c { background: var(–paper); padding: 32px 36px 40px; }
+.fw-c:last-child { background: var(–white); }
+.fw-label {
+font-family: var(–fl); font-weight: 600; font-size: 10px;
+letter-spacing: 0.3em; text-transform: uppercase; color: var(–mid);
+padding-bottom: 18px; border-bottom: 1px solid var(–rule);
+}
+.fw-list { list-style: none; }
+.fw-list li {
+display: flex; gap: 16px; align-items: flex-start;
+padding: 12px 0; border-bottom: 1px solid var(–rule);
+font-size: 15px; color: var(–muted); line-height: 1.55;
+}
+.fm { font-family: var(–fl); font-size: 12px; font-weight: 600; flex-shrink: 0; color: var(–mid); margin-top: 1px; }
+
+/* ── PROCESS ── */
+#process { background: var(–paper); }
+.pr-rows { max-width: 800px; }
+.pr {
+display: grid; grid-template-columns: 88px 1fr;
+border-bottom: 1px solid var(–rule);
+opacity: 0; transform: translateY(14px);
+transition: opacity .45s, transform .45s;
+}
+.pr:first-child { border-top: 1px solid var(–rule); }
+.pr.vis { opacity: 1; transform: translateY(0); }
+.pr:hover { background: var(–off); }
+.pr-nw {
+padding: 28px 0; border-right: 1px solid var(–rule);
+display: flex; align-items: flex-start; justify-content: center;
+}
+.pr-n { font-family: var(–fl); font-weight: 400; font-size: 11px; letter-spacing: 0.18em; color: var(–rule); }
+.pr-b { padding: 28px 0 28px 40px; }
+.pr-h { font-family: var(–fd); font-weight: 600; font-size: 20px; color: var(–ink); margin-bottom: 8px; }
+.pr-t { font-size: 15px; color: var(–muted); line-height: 1.7; font-weight: 300; }
+
+/* ── PRICING ── */
+#pricing { background: var(–ink); border-top: 1px solid #1d1c1a; }
+#pricing .ey { color: #444; }
+#pricing .ey::before { background: #2a2a27; }
+#pricing .disp { color: var(–paper); }
+#pricing .disp .it { color: #555; }
+.px-g { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+.pc { border: 1px solid #222; background: #191815; padding: 40px 40px; }
+.pc-badge {
+font-family: var(–fl); font-weight: 600; font-size: 10px;
+letter-spacing: 0.28em; text-transform: uppercase;
+color: var(–paper); background: #2c2a27;
+display: inline-block; padding: 7px 16px; margin-bottom: 28px;
+}
+.pc-amt {
+font-family: var(–fd); font-weight: 700; font-size: 96px;
+line-height: 1; color: var(–paper); letter-spacing: -0.03em;
+}
+.pc-amt sup { font-size: 32px; font-weight: 400; vertical-align: super; color: #555; }
+.pc-per {
+font-family: var(–fl); font-weight: 400; font-size: 11px;
+letter-spacing: 0.18em; text-transform: uppercase; color: #444;
+margin-top: 8px; margin-bottom: 28px;
+}
+.pc-list { list-style: none; margin-bottom: 32px; }
+.pc-list li {
+display: flex; align-items: center; gap: 14px;
+padding: 10px 0; border-bottom: 1px solid #1e1d1b;
+font-size: 14px; color: #777; font-weight: 300;
+}
+.pc-list li::before { content: ‘’; width: 4px; height: 4px; background: #333; border-radius: 50%; flex-shrink: 0; }
+.btn-p {
+font-family: var(–fl); font-weight: 600; font-size: 12px;
+letter-spacing: 0.2em; text-transform: uppercase;
+color: var(–ink); background: var(–paper);
+padding: 17px 40px; text-decoration: none;
+display: block; text-align: center;
+transition: background .2s, transform .15s;
+}
+.btn-p:hover { background: var(–off); transform: translateY(-1px); }
+.pc-note { margin-top: 18px; font-size: 12px; color: #3a3835; line-height: 1.7; font-weight: 300; }
+.px-r { padding-top: 4px; }
+.px-r p { font-size: 16px; color: #555; line-height: 1.85; margin-bottom: 22px; font-weight: 300; }
+.px-r strong { color: #888; font-weight: 400; }
+.ms { list-style: none; margin-top: 44px; }
+.m {
+display: flex; justify-content: space-between; align-items: baseline;
+padding: 18px 0; border-bottom: 1px solid #1a1917;
+}
+.m-l { font-family: var(–fl); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: #3a3835; }
+.m-v { font-family: var(–fd); font-weight: 600; font-size: 19px; color: #555; }
+.m-v.now { color: var(–paper); }
+
+/* ── APPLY ── */
+#apply { background: var(–paper); border-top: 1px solid var(–rule); }
+.ap-g { display: grid; grid-template-columns: 1fr 2fr; gap: 80px; align-items: start; }
+.ap-side p { font-size: 15px; color: var(–muted); line-height: 1.8; margin-bottom: 18px; font-weight: 300; }
+.ap-side strong { color: var(–coal); font-weight: 500; }
+.ap-note {
+margin-top: 32px; padding: 22px 24px;
+background: var(–off); border: 1px solid var(–rule);
+font-size: 13px; color: var(–muted); line-height: 1.75; font-weight: 300;
+}
+
+/* ── FORM ── */
+.fs { display: flex; flex-direction: column; gap: 2px; }
+.fsec { border: 1px solid var(–rule); overflow: hidden; background: var(–white); }
+.fsec-h {
+padding: 20px 28px; display: flex; align-items: center; justify-content: space-between;
+cursor: pointer; user-select: none; background: var(–off); transition: background .15s;
+}
+.fsec-h:hover { background: var(–rule); }
+.fsec-hl { display: flex; align-items: center; gap: 18px; }
+.fsec-n { font-family: var(–fl); font-size: 10px; font-weight: 500; letter-spacing: 0.18em; color: var(–mid); }
+.fsec-name { font-family: var(–fl); font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(–coal); }
+.fsec-tog { font-size: 20px; color: var(–mid); transition: transform .25s; line-height: 1; font-weight: 300; }
+.fsec.open .fsec-tog { transform: rotate(45deg); }
+.fsec-b { display: none; padding: 28px 28px 36px; }
+.fsec.open .fsec-b { display: block; }
+.fr { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+.fr.one { grid-template-columns: 1fr; }
+.fr.three { grid-template-columns: 1fr 1fr 1fr; }
+.ff { display: flex; flex-direction: column; gap: 7px; }
+.ff label {
+font-family: var(–fl); font-size: 10px; font-weight: 600;
+letter-spacing: 0.22em; text-transform: uppercase; color: var(–mid);
+}
+.ff input, .ff select, .ff textarea {
+background: var(–paper); border: 1px solid var(–rule);
+color: var(–ink); font-family: var(–fb);
+font-size: 15px; font-weight: 300;
+padding: 12px 15px; outline: none;
+transition: border-color .2s, background .2s;
+width: 100%; appearance: none; -webkit-appearance: none; border-radius: 0;
+}
+.ff input:focus, .ff select:focus, .ff textarea:focus {
+border-color: var(–coal); background: var(–white);
+}
+.ff input::placeholder, .ff textarea::placeholder { color: var(–rule); font-style: italic; }
+.ff textarea { resize: vertical; min-height: 92px; line-height: 1.6; }
+.ff select { cursor: pointer; background-image: url(“data:image/svg+xml,%3Csvg xmlns=‘http://www.w3.org/2000/svg’ width=‘12’ height=‘8’ viewBox=‘0 0 12 8’%3E%3Cpath d=‘M1 1l5 5 5-5’ stroke=’%23b8b3a9’ stroke-width=‘1.5’ fill=‘none’/%3E%3C/svg%3E”); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
+.ff select option { background: var(–white); }
+.f-foot {
+margin-top: 3px; padding: 40px;
+background: var(–off); border: 1px solid var(–rule);
+display: flex; flex-direction: column; align-items: flex-start; gap: 18px;
+}
+.f-foot p { font-size: 13px; color: var(–mid); line-height: 1.75; max-width: 460px; font-weight: 300; }
+.btn-sub {
+font-family: var(–fl); font-weight: 600; font-size: 12px;
+letter-spacing: 0.2em; text-transform: uppercase;
+color: var(–white); background: var(–ink);
+border: none; padding: 16px 48px; cursor: pointer;
+transition: background .2s, transform .15s;
+}
+.btn-sub:hover { background: var(–coal); transform: translateY(-1px); }
+
+/* ── FOOTER ── */
+footer.ft {
+background: var(–ink); border-top: 1px solid #1a1917;
+padding: 52px 56px;
+display: grid; grid-template-columns: 1fr auto 1fr; gap: 32px; align-items: center;
+}
+.fl-logo { font-family: var(–fd); font-weight: 700; font-size: 22px; color: var(–paper); }
+.fl-logo span { font-weight: 400; font-style: italic; color: #444; }
+.fl-mid { font-family: var(–fl); font-size: 10px; font-weight: 500; letter-spacing: 0.24em; text-transform: uppercase; color: #333; text-align: center; }
+.fl-r { text-align: right; font-family: var(–fl); font-size: 10px; font-weight: 400; letter-spacing: 0.14em; color: #333; line-height: 1.9; }
+
+/* ── ANIMATIONS ── */
+@keyframes up   { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+@keyframes fade { from { opacity:0; } to { opacity:1; } }
+@keyframes scroll { from { transform:translateX(0); } to { transform:translateX(-50%); } }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 960px) {
+nav.wn { padding: 0 24px; }
+section { padding: 72px 24px; }
+.hero { grid-template-columns: 1fr; }
+.h-left { padding: 80px 24px 48px; border-right: none; }
+.h-right { display: none; }
+.prob-g, .off-top, .px-g, .ap-g, .fw-g { grid-template-columns: 1fr; }
+.off-g { grid-template-columns: 1fr 1fr; }
+.fr, .fr.three { grid-template-columns: 1fr; }
+footer.ft { grid-template-columns: 1fr; text-align: center; }
+.fl-r { text-align: center; }
+}
+@media (max-width: 580px) {
+.off-g { grid-template-columns: 1fr; }
+.wn-link { display: none; }
+}
+
+</style>
 </head>
 <body>
 
-  <nav class="wn" aria-label="Primary">
-    <a href="#" class="wn-logo">12 Weeks <span>to War</span></a>
-    <div class="wn-r">
-      <a href="#offer" class="wn-link">Program</a>
-      <a href="#pricing" class="wn-link">Pricing</a>
-      <a href="#apply" class="wn-cta">Apply Now</a>
+<!-- NAV -->
+
+<nav class="wn">
+  <a href="#" class="wn-logo">12 Weeks <span>to War</span></a>
+  <div class="wn-r">
+    <a href="#offer" class="wn-link">Program</a>
+    <a href="#pricing" class="wn-link">Pricing</a>
+    <a href="#apply" class="wn-cta">Apply Now</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+  <div class="h-left">
+    <div class="h-kick">1:1 Coaching &nbsp;·&nbsp; Founding Rate Open</div>
+    <h1 class="h-head">
+      12<br>Weeks<br><span class="it">to War.</span>
+    </h1>
+    <div class="h-div"></div>
+    <p class="h-sub">
+      A coaching system for <strong>busy fathers and working men</strong> who want to cut body fat, build an athletic physique, and tighten their discipline.<br><br>
+      Custom training. Custom macros. Weekly accountability. <strong>Built for real life.</strong>
+    </p>
+    <div class="h-ctas">
+      <a href="#apply" class="btn-d">Apply for a Spot</a>
+      <a href="#offer" class="btn-t">See what's included</a>
     </div>
-  </nav>
+  </div>
+  <div class="h-right">
+    <div class="h-ghost">12</div>
+    <div class="h-stats">
+      <div class="h-stat"><span class="sk">Duration</span><span class="sv">12 Weeks</span></div>
+      <div class="h-stat"><span class="sk">Format</span><span class="sv">1:1 Coaching</span></div>
+      <div class="h-stat"><span class="sk">Founding Rate</span><span class="sv">$497</span></div>
+      <div class="h-stat"><span class="sk">Spots Available</span><span class="sv">5 Only</span></div>
+      <div class="h-stat"><span class="sk">Weekly Touchpoints</span><span class="sv">Call + Check-In</span></div>
+    </div>
+  </div>
+</section>
 
-  <main>
-    <section class="hero" aria-label="Hero">
-      <div class="h-left">
-        <div class="h-kick">1:1 Coaching &nbsp;·&nbsp; Founding Rate Open</div>
-        <h1 class="h-head">
-          12<br />Weeks<br /><span class="it">to War.</span>
-        </h1>
-        <div class="h-div"></div>
-        <p class="h-subhead">
-          A physique system for men with real responsibilities.
-        </p>
-        <p class="h-sub">
-          Built for busy fathers and working men who want to cut body fat, build an athletic physique, and follow a system that holds up in real life.<br /><br />
-          Custom training. Custom nutrition. Weekly accountability. <strong>Built around The No Drift Method.</strong>
-        </p>
-        <div class="h-ctas">
-          <a href="#apply" class="btn-d">Apply for a Spot</a>
-          <a href="#offer" class="btn-t">See what's included</a>
-        </div>
-      </div>
+<!-- TICKER -->
 
-      <div class="h-right">
-        <div class="h-ghost">12</div>
-        <div class="h-stats">
-          <div class="h-stat"><span class="sk">Duration</span><span class="sv">12 Weeks</span></div>
-          <div class="h-stat"><span class="sk">Format</span><span class="sv">1:1 Coaching</span></div>
-          <div class="h-stat"><span class="sk">Method</span><span class="sv">No Drift</span></div>
-          <div class="h-stat"><span class="sk">Founding Rate</span><span class="sv">$497</span></div>
-          <div class="h-stat"><span class="sk">Spots Available</span><span class="sv">5 Only</span></div>
-        </div>
-      </div>
-    </section>
+<div class="tick">
+  <div class="tick-t">
+    <span>Custom Training</span><span class="sp">◆</span>
+    <span>Custom Nutrition</span><span class="sp">◆</span>
+    <span>Weekly Check-Ins</span><span class="sp">◆</span>
+    <span>1:1 Coaching Call</span><span class="sp">◆</span>
+    <span>Direct Access</span><span class="sp">◆</span>
+    <span>Real Accountability</span><span class="sp">◆</span>
+    <span>12 Weeks. Real Results.</span><span class="sp">◆</span>
+    <span>Custom Training</span><span class="sp">◆</span>
+    <span>Custom Nutrition</span><span class="sp">◆</span>
+    <span>Weekly Check-Ins</span><span class="sp">◆</span>
+    <span>1:1 Coaching Call</span><span class="sp">◆</span>
+    <span>Direct Access</span><span class="sp">◆</span>
+    <span>Real Accountability</span><span class="sp">◆</span>
+    <span>12 Weeks. Real Results.</span><span class="sp">◆</span>
+  </div>
+</div>
 
-    <div class="tick">
-      <div class="tick-t">
-        <span>Custom Training</span><span class="sp">◆</span>
-        <span>Custom Nutrition</span><span class="sp">◆</span>
-        <span>Weekly Check-Ins</span><span class="sp">◆</span>
-        <span>No Drift Method</span><span class="sp">◆</span>
-        <span>Real Accountability</span><span class="sp">◆</span>
-        <span>Built for Real Life</span><span class="sp">◆</span>
-        <span>Custom Training</span><span class="sp">◆</span>
-        <span>Custom Nutrition</span><span class="sp">◆</span>
-        <span>Weekly Check-Ins</span><span class="sp">◆</span>
-        <span>No Drift Method</span><span class="sp">◆</span>
-        <span>Real Accountability</span><span class="sp">◆</span>
-        <span>Built for Real Life</span><span class="sp">◆</span>
+<!-- PROBLEM -->
+
+<section id="problem">
+  <div class="ey">The Problem</div>
+  <div class="prob-g">
+    <div>
+      <h2 class="disp">You know<br>what to do.<br><span class="it">You're not<br>doing it.</span></h2>
+      <div class="prob-b">
+        <p>You're not lazy. You have a job, a family, real responsibilities. The problem isn't motivation — it never was. The problem is no structure built to survive your actual life.</p>
+        <p>You've tried programs before. Downloaded PDFs. Bought apps. None of it accounted for the Tuesday when everything falls apart and you skip the gym for three weeks.</p>
+        <p><strong>This program does.</strong> It's built on what actually works for men without perfect conditions — because perfect conditions don't exist.</p>
       </div>
     </div>
+    <div>
+      <div class="pull">"The missing piece isn't knowledge. It's structure and someone holding the standard."</div>
+      <ul class="tr-list">
+        <li class="tr"><span class="tr-n">01</span><span class="tr-t">You used to be in shape. You know what it felt like. You want it back.</span></li>
+        <li class="tr"><span class="tr-n">02</span><span class="tr-t">You're inconsistent — not from lack of willpower, but lack of a real system.</span></li>
+        <li class="tr"><span class="tr-n">03</span><span class="tr-t">You've bought programs and didn't finish them.</span></li>
+        <li class="tr"><span class="tr-n">04</span><span class="tr-t">You're tired, stressed, eating whatever's convenient.</span></li>
+        <li class="tr"><span class="tr-n">05</span><span class="tr-t">You want to look good, feel strong, carry yourself differently.</span></li>
+        <li class="tr"><span class="tr-n">06</span><span class="tr-t">You don't need motivation. You need structure.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
 
-    <section id="problem">
-      <div class="ey">The Problem</div>
-      <div class="prob-g">
-        <div>
-          <h2 class="disp">You know<br />what to do.<br /><span class="it">You need a plan that holds.</span></h2>
-          <div class="prob-b">
-            <p>You're not lazy. You have a job, a family, and real responsibilities. The problem isn't knowing what to do. The problem is that most plans fall apart the moment life gets heavy.</p>
-            <p><strong>This one is built differently.</strong> 12 Weeks to War is designed to keep progress moving even when the week is not perfect.</p>
-          </div>
-        </div>
+<!-- OFFER -->
 
-        <div>
-          <div class="pull">“The missing piece is not more information. It is structure that survives real life.”</div>
-          <ul class="tr-list">
-            <li class="tr"><span class="tr-n">01</span><span class="tr-t">You used to be in better shape and want that version of yourself back.</span></li>
-            <li class="tr"><span class="tr-n">02</span><span class="tr-t">You have had good starts, but no system that lasted under pressure.</span></li>
-            <li class="tr"><span class="tr-n">03</span><span class="tr-t">Your time is limited, so the plan has to fit real schedules.</span></li>
-            <li class="tr"><span class="tr-n">04</span><span class="tr-t">You want visible progress without pretending life is empty.</span></li>
-            <li class="tr"><span class="tr-n">05</span><span class="tr-t">You do not need more motivation. You need a standard.</span></li>
-          </ul>
-        </div>
+<section id="offer">
+  <div class="off-top">
+    <div>
+      <div class="ey">The Program</div>
+      <h2 class="disp">The Full<br><span class="it">System.</span></h2>
+    </div>
+    <div class="off-intro">One flagship offer. Nothing watered down. Everything you need to build a leaner, stronger physique — with the accountability to actually finish what you start.</div>
+  </div>
+  <div class="off-g">
+    <div class="oc"><div class="oc-n">01</div><div class="oc-h">Custom Training Plan</div><div class="oc-b">A full 12-week resistance training program built around your schedule, equipment, experience, and goals.</div></div>
+    <div class="oc"><div class="oc-n">02</div><div class="oc-h">Custom Nutrition Targets</div><div class="oc-b">Macro targets and a calorie strategy built for your body, activity level, and lifestyle. Not a generic diet.</div></div>
+    <div class="oc"><div class="oc-n">03</div><div class="oc-h">Cardio & Activity Strategy</div><div class="oc-b">Daily step targets and cardio guidelines calibrated to accelerate fat loss without burning you out.</div></div>
+    <div class="oc"><div class="oc-n">04</div><div class="oc-h">Weekly Check-In Review</div><div class="oc-b">Every week you submit weight, waist, photos, and adherence scores. Every week I review and adjust.</div></div>
+    <div class="oc"><div class="oc-n">05</div><div class="oc-h">Weekly Coaching Call</div><div class="oc-b">15–20 minutes, once a week. What happened, what worked, where compliance broke, what changes this week.</div></div>
+    <div class="oc"><div class="oc-n">06</div><div class="oc-h">Direct Message Support</div><div class="oc-b">Questions or problems mid-week — you have access. You're not left to figure it out alone.</div></div>
+    <div class="oc"><div class="oc-n">07</div><div class="oc-h">Onboarding Strategy</div><div class="oc-b">Full intake assessment, baseline metrics, and kickoff strategy. The right plan from day one.</div></div>
+    <div class="oc"><div class="oc-n">08</div><div class="oc-h">Progress Tracking</div><div class="oc-b">We track weight, waist, performance, photos, and adherence. A clear, honest record throughout.</div></div>
+  </div>
+</section>
+
+<!-- FOR WHO -->
+
+<section id="forwho">
+  <div class="ey">Right Fit</div>
+  <h2 class="disp">Who This<br><span class="it">Is For.</span></h2>
+  <div class="fw-g">
+    <div class="fw-c">
+      <div class="fw-label">This is built for you if —</div>
+      <ul class="fw-list">
+        <li><span class="fm">✓</span> You're a busy father or working man with real but limited time to train</li>
+        <li><span class="fm">✓</span> You want to cut body fat and build a lean, athletic physique</li>
+        <li><span class="fm">✓</span> You're serious about structure and willing to track honestly</li>
+        <li><span class="fm">✓</span> You want something custom — not recycled generic programming</li>
+        <li><span class="fm">✓</span> You're ready to be held accountable and do your part</li>
+        <li><span class="fm">✓</span> You want to look and feel like a man who has his life together</li>
+      </ul>
+    </div>
+    <div class="fw-c">
+      <div class="fw-label">This is not for you if —</div>
+      <ul class="fw-list">
+        <li><span class="fm" style="color:var(--rule)">✕</span> You want a quick fix with no real work required</li>
+        <li><span class="fm" style="color:var(--rule)">✕</span> You're unwilling to track food, weight, and check-ins consistently</li>
+        <li><span class="fm" style="color:var(--rule)">✕</span> You'll blame the plan instead of your execution</li>
+        <li><span class="fm" style="color:var(--rule)">✕</span> You're looking for motivation content, not a coaching system</li>
+        <li><span class="fm" style="color:var(--rule)">✕</span> You can't commit to 12 weeks of honest effort</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+
+<section id="process">
+  <div class="ey">How It Works</div>
+  <h2 class="disp">The<br><span class="it">Process.</span></h2>
+  <div class="pr-rows">
+    <div class="pr"><div class="pr-nw"><span class="pr-n">01</span></div><div class="pr-b"><div class="pr-h">Apply</div><div class="pr-t">Fill out the application below. Be honest — this is how I build the right plan, not screen you out. Takes about 10 minutes.</div></div></div>
+    <div class="pr"><div class="pr-nw"><span class="pr-n">02</span></div><div class="pr-b"><div class="pr-h">Review & Confirm</div><div class="pr-t">I review every application within 24 hours. If it's a fit, I'll send a payment link and onboarding details. No pitch call. No pressure.</div></div></div>
+    <div class="pr"><div class="pr-nw"><span class="pr-n">03</span></div><div class="pr-b"><div class="pr-h">Onboard</div><div class="pr-t">Complete the intake form, submit starting photos and measurements. Custom plan delivered within 48 hours of payment.</div></div></div>
+    <div class="pr"><div class="pr-nw"><span class="pr-n">04</span></div><div class="pr-b"><div class="pr-h">Execute</div><div class="pr-t">Train, track, and check in weekly. I review and adjust. The weekly call keeps everything dialed. You execute — I handle the strategy.</div></div></div>
+    <div class="pr"><div class="pr-nw"><span class="pr-n">05</span></div><div class="pr-b"><div class="pr-h">12 Weeks Later</div><div class="pr-t">A leaner, stronger physique and a system you understand. Real, measurable progress you earned — and a baseline to build the next phase on.</div></div></div>
+  </div>
+</section>
+
+<!-- PRICING -->
+
+<section id="pricing">
+  <div class="ey">Investment</div>
+  <h2 class="disp">One Offer.<br><span class="it">No Upsells.</span></h2>
+  <div class="px-g">
+    <div class="pc">
+      <div class="pc-badge">Founding Client Rate</div>
+      <div class="pc-amt"><sup>$</sup>497</div>
+      <div class="pc-per">One payment &nbsp;·&nbsp; Full 12 weeks</div>
+      <ul class="pc-list">
+        <li>Custom 12-week training program</li>
+        <li>Custom macro and nutrition targets</li>
+        <li>Cardio and step strategy</li>
+        <li>Weekly check-in review and adjustments</li>
+        <li>Weekly 1:1 coaching call</li>
+        <li>Direct message support throughout</li>
+        <li>Onboarding and starting strategy</li>
+        <li>Full progress tracking system</li>
+      </ul>
+      <a href="#apply" class="btn-p">Apply for a Founding Spot →</a>
+      <p class="pc-note">This rate closes after 5 clients. No exceptions, no extensions.</p>
+    </div>
+    <div class="px-r">
+      <p>You're not paying for a PDF or template. You're paying for <strong>custom programming, weekly accountability, and direct access to someone who reviews your progress every single week</strong> and adjusts accordingly.</p>
+      <p>The founding rate exists because I'm building my first wave of client results. After that, the price reflects the full value of the system.</p>
+      <ul class="ms">
+        <li class="m"><span class="m-l">Founding Rate (Now)</span><span class="m-v now">$497</span></li>
+        <li class="m"><span class="m-l">After 5 Clients</span><span class="m-v">$697</span></li>
+        <li class="m"><span class="m-l">Full Rate (Phase 3)</span><span class="m-v">$997+</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- APPLY -->
+
+<section id="apply">
+  <div class="ap-g">
+    <div class="ap-side">
+      <div class="ey">The Application</div>
+      <h2 class="disp" style="font-size:clamp(34px,3.8vw,52px); margin-bottom:24px;">Let's See<br>If You're<br><span class="it">Ready.</span></h2>
+      <p>This takes 10–15 minutes. Fill it out completely and honestly. Partial or vague answers get skipped.</p>
+      <p>There's no pitch call. You apply, I review, and I'll reach out within 24 hours if it's a fit.</p>
+      <p><strong>Every question serves a purpose.</strong> This is how your custom plan gets built — not from a template, but from your actual life.</p>
+      <div class="ap-note">Only 5 founding spots at $497. Once those are taken, the rate moves to $697. If you're ready, apply now.</div>
+    </div>
+
+```
+<form class="fs" id="appForm" action="#" method="POST">
+
+  <div class="fsec open">
+    <div class="fsec-h" onclick="toggle(this)">
+      <div class="fsec-hl"><span class="fsec-n">01</span><span class="fsec-name">Core Info</span></div>
+      <span class="fsec-tog">+</span>
+    </div>
+    <div class="fsec-b">
+      <div class="fr"><div class="ff"><label>Full Name *</label><input type="text" name="full_name" placeholder="John Smith" required></div><div class="ff"><label>Email Address *</label><input type="email" name="email" placeholder="john@email.com" required></div></div>
+      <div class="fr"><div class="ff"><label>Instagram Handle</label><input type="text" name="instagram" placeholder="@yourhandle"></div><div class="ff"><label>Age *</label><input type="number" name="age" placeholder="34" required></div></div>
+      <div class="fr three">
+        <div class="ff"><label>Height</label><input type="text" name="height" placeholder="5'11&quot;"></div>
+        <div class="ff"><label>Weight (lbs)</label><input type="number" name="weight" placeholder="195"></div>
+        <div class="ff"><label>Waist (in)</label><input type="number" name="waist" placeholder="36"></div>
       </div>
-    </section>
+      <div class="fr"><div class="ff"><label>Goal Weight / Target BF%</label><input type="text" name="goal_weight" placeholder="175 lbs / ~12%"></div><div class="ff"><label>Occupation</label><input type="text" name="occupation" placeholder="Operations Manager"></div></div>
+      <div class="fr one"><div class="ff"><label>Daily Activity Level Outside Training</label><select name="activity_level"><option value="">Select one</option><option>Sedentary — desk job, mostly sitting</option><option>Lightly active — some walking/standing</option><option>Moderately active — on my feet often</option><option>Very active — physical job or highly active lifestyle</option></select></div></div>
+    </div>
+  </div>
 
-    <section id="offer">
-      <div class="off-top">
-        <div>
-          <div class="ey">The Program</div>
-          <h2 class="disp">The Full<br /><span class="it">System.</span></h2>
-        </div>
-        <div class="off-intro">One focused offer. Nothing watered down. Everything you need to get leaner, stronger, and more consistent, with accountability that holds up in real life.</div>
+  <div class="fsec">
+    <div class="fsec-h" onclick="toggle(this)">
+      <div class="fsec-hl"><span class="fsec-n">02</span><span class="fsec-name">Goals</span></div>
+      <span class="fsec-tog">+</span>
+    </div>
+    <div class="fsec-b">
+      <div class="fr"><div class="ff"><label>Primary Goal *</label><select name="primary_goal" required><option value="">Select one</option><option>Cut body fat — main priority</option><option>Build muscle and strength</option><option>Both — body recomposition</option><option>Improve overall fitness and discipline</option></select></div><div class="ff"><label>Secondary Goal</label><select name="secondary_goal"><option value="">Select one</option><option>Improve energy and performance</option><option>Build discipline and consistency</option><option>Improve athletic performance</option><option>Better health markers</option><option>Set a better example for my kids</option></select></div></div>
+      <div class="fr one"><div class="ff"><label>Why now? What made you apply today? *</label><textarea name="why_now" placeholder="Be honest. What's the real reason this matters right now?" required></textarea></div></div>
+      <div class="fr one"><div class="ff"><label>Biggest obstacle right now</label><textarea name="obstacle" placeholder="What's been getting in the way?"></textarea></div></div>
+      <div class="fr one"><div class="ff"><label>What does a successful 12 weeks look like?</label><textarea name="success_vision" placeholder="Describe what you want to look like, feel like, or be capable of at week 12."></textarea></div></div>
+    </div>
+  </div>
+
+  <div class="fsec">
+    <div class="fsec-h" onclick="toggle(this)">
+      <div class="fsec-hl"><span class="fsec-n">03</span><span class="fsec-name">Training</span></div>
+      <span class="fsec-tog">+</span>
+    </div>
+    <div class="fsec-b">
+      <div class="fr"><div class="ff"><label>Training Experience</label><select name="training_exp"><option value="">Select one</option><option>Beginner — less than 1 year consistent</option><option>Intermediate — 1–3 years</option><option>Experienced — 3+ years, solid foundation</option><option>Trained before but been off a while</option></select></div><div class="ff"><label>Days Available Per Week</label><select name="training_days"><option value="">Select one</option><option>2 days</option><option>3 days</option><option>4 days</option><option>5 days</option></select></div></div>
+      <div class="fr"><div class="ff"><label>Avg Session Length</label><select name="session_length"><option value="">Select one</option><option>30–40 minutes</option><option>45–60 minutes</option><option>60–75 minutes</option><option>75+ minutes</option></select></div><div class="ff"><label>Training Location</label><select name="training_location"><option value="">Select one</option><option>Commercial gym — full equipment</option><option>Home gym — decent setup</option><option>Home gym — limited equipment</option><option>Bodyweight only</option></select></div></div>
+      <div class="fr one"><div class="ff"><label>Current routine / what you've been doing</label><textarea name="current_routine" placeholder="Even if it's inconsistent or nothing — be honest."></textarea></div></div>
+      <div class="fr one"><div class="ff"><label>Injuries, pain points, or limitations</label><textarea name="injuries" placeholder="Any joint issues, back problems, or injuries I need to know about?"></textarea></div></div>
+      <div class="fr"><div class="ff"><label>Current Daily Step Count</label><input type="text" name="steps" placeholder="~5,000/day"></div><div class="ff"><label>Cardio Preference</label><select name="cardio_pref"><option value="">Select one</option><option>Steady-state — walking, incline treadmill</option><option>HIIT / conditioning</option><option>Cycling or rowing</option><option>Outdoor running</option><option>No preference</option><option>I dislike cardio</option></select></div></div>
+    </div>
+  </div>
+
+  <div class="fsec">
+    <div class="fsec-h" onclick="toggle(this)">
+      <div class="fsec-hl"><span class="fsec-n">04</span><span class="fsec-name">Nutrition</span></div>
+      <span class="fsec-tog">+</span>
+    </div>
+    <div class="fsec-b">
+      <div class="fr"><div class="ff"><label>Current Eating Style</label><select name="eating_style"><option value="">Select one</option><option>No structure — eating whatever's available</option><option>Generally healthy but inconsistent</option><option>Tracking calories/macros already</option><option>Following a specific diet</option></select></div><div class="ff"><label>Meals Per Day</label><select name="meals_per_day"><option value="">Select one</option><option>1–2 meals</option><option>2–3 meals</option><option>3–4 meals</option><option>4–5 meals</option><option>Varies widely</option></select></div></div>
+      <div class="fr one"><div class="ff"><label>Food Preferences and Dislikes</label><textarea name="food_prefs" placeholder="What do you eat most? What do you avoid?"></textarea></div></div>
+      <div class="fr"><div class="ff"><label>Food Restrictions / Allergies</label><input type="text" name="restrictions" placeholder="Lactose intolerant, no shellfish, etc."></div><div class="ff"><label>Alcohol Intake</label><select name="alcohol"><option value="">Select one</option><option>None</option><option>1–2 drinks/week</option><option>3–5 drinks/week</option><option>6–10 drinks/week</option><option>10+ drinks/week</option></select></div></div>
+      <div class="fr one"><div class="ff"><label>Weekend Eating Challenges</label><textarea name="weekend_eating" placeholder="What tends to fall apart on weekends?"></textarea></div></div>
+      <div class="fr"><div class="ff"><label>Est. Current Calories</label><input type="text" name="calories" placeholder="~2,400/day or 'no idea'"></div><div class="ff"><label>Est. Current Macros</label><input type="text" name="macros" placeholder="~180P / 220C / 80F or 'not tracking'"></div></div>
+      <div class="fr one"><div class="ff"><label>Full day of eating — yesterday or a typical day *</label><textarea name="food_log" style="min-height:116px" placeholder="Breakfast, lunch, dinner, snacks, drinks. Be specific — this matters." required></textarea></div></div>
+    </div>
+  </div>
+
+  <div class="fsec">
+    <div class="fsec-h" onclick="toggle(this)">
+      <div class="fsec-hl"><span class="fsec-n">05</span><span class="fsec-name">Lifestyle & Recovery</span></div>
+      <span class="fsec-tog">+</span>
+    </div>
+    <div class="fsec-b">
+      <div class="fr three">
+        <div class="ff"><label>Avg Sleep Per Night</label><select name="sleep"><option value="">Select</option><option>Under 5 hours</option><option>5–6 hours</option><option>6–7 hours</option><option>7–8 hours</option><option>8+ hours</option></select></div>
+        <div class="ff"><label>Stress Level (1–10)</label><input type="number" name="stress" placeholder="7" min="1" max="10"></div>
+        <div class="ff"><label>Number of Kids</label><input type="number" name="kids" placeholder="2" min="0"></div>
       </div>
+      <div class="fr"><div class="ff"><label>Work Schedule</label><select name="work_schedule"><option value="">Select one</option><option>Standard office / 9–5</option><option>Early mornings or long days</option><option>Shift work / irregular hours</option><option>Remote / flexible</option><option>Travel-heavy role</option></select></div><div class="ff"><label>Travel Frequency</label><select name="travel"><option value="">Select one</option><option>Rarely or never</option><option>A few times a year</option><option>Monthly</option><option>Frequent — weekly or more</option></select></div></div>
+      <div class="fr"><div class="ff"><label>Hardest Time for Compliance</label><select name="hard_time"><option value="">Select one</option><option>Mornings — hard to train early</option><option>Evenings — tired after work</option><option>Weekends — structure falls apart</option><option>Travel days</option><option>No specific pattern</option></select></div><div class="ff"><label>Support at Home</label><select name="home_support"><option value="">Select one</option><option>Yes — partner is supportive</option><option>Neutral — they don't interfere</option><option>No — creates some friction</option><option>Single / living alone</option></select></div></div>
+    </div>
+  </div>
 
-      <div class="off-g">
-        <div class="oc"><div class="oc-n">01</div><div class="oc-h">Custom Training Plan</div><div class="oc-b">A full 12-week resistance training plan built around your schedule, equipment, and goal.</div></div>
-        <div class="oc"><div class="oc-n">02</div><div class="oc-h">Custom Nutrition Targets</div><div class="oc-b">Calories and macros set for fat loss, performance, and adherence.</div></div>
-        <div class="oc"><div class="oc-n">03</div><div class="oc-h">Cardio &amp; Activity Strategy</div><div class="oc-b">Daily step targets and cardio guidelines, plus simpler fallback targets for stressful weeks.</div></div>
-        <div class="oc"><div class="oc-n">04</div><div class="oc-h">Weekly Check-In Review</div><div class="oc-b">Weight, waist, progress, adherence, and exactly what gets adjusted next.</div></div>
-        <div class="oc"><div class="oc-n">05</div><div class="oc-h">Weekly Coaching Call</div><div class="oc-b">A short weekly call to review execution, pressure points, and next-week priorities.</div></div>
-        <div class="oc"><div class="oc-n">06</div><div class="oc-h">Direct Message Support</div><div class="oc-b">Questions and mid-week course correction when life gets messy.</div></div>
-        <div class="oc"><div class="oc-n">07</div><div class="oc-h">Onboarding Strategy</div><div class="oc-b">Full intake assessment, baseline metrics, and the right setup from day one.</div></div>
-        <div class="oc"><div class="oc-n">08</div><div class="oc-h">Progress Tracking</div><div class="oc-b">Track what changed, what held, and how to avoid drift when the week is imperfect.</div></div>
-      </div>
-    </section>
+  <div class="fsec">
+    <div class="fsec-h" onclick="toggle(this)">
+      <div class="fsec-hl"><span class="fsec-n">06</span><span class="fsec-name">Commitment</span></div>
+      <span class="fsec-tog">+</span>
+    </div>
+    <div class="fsec-b">
+      <div class="fr one"><div class="ff"><label>Ready to follow a structured plan for 12 weeks?</label><select name="ready_plan"><option value="">Select one</option><option>Yes — I'll follow the plan as written</option><option>Mostly — I might push back on some things</option><option>Not sure yet</option></select></div></div>
+      <div class="fr one"><div class="ff"><label>Willing to track food, weight, and check in weekly with full honesty?</label><select name="willing_track"><option value="">Select one</option><option>Yes — I'll track consistently</option><option>I'll try, but I've struggled before</option><option>No — I don't want to track food</option></select></div></div>
+      <div class="fr one"><div class="ff"><label>What usually causes you to fall off? *</label><textarea name="fall_off" placeholder="Be honest. This is how I build accountability around your actual weak points." required></textarea></div></div>
+      <div class="fr one"><div class="ff"><label>Anything else I should know? (Optional)</label><textarea name="other" placeholder="Anything important not covered above."></textarea></div></div>
+    </div>
+  </div>
 
-    <section id="nodrift">
-      <div class="ey">Built In</div>
-      <h2 class="disp">The No Drift<br /><span class="it">Method.</span></h2>
+  <div class="f-foot">
+    <p>Submitting this application doesn't commit you to anything. I'll review your answers and reach out within 24 hours if it's a fit. No pitch call. No pressure.</p>
+    <button type="submit" class="btn-sub">Submit Application</button>
+  </div>
 
-      <div class="nd-wrap">
-        <div class="nd-copy">
-          Most men do not fail because they lack a plan. They fail because the plan collapses under real life. <strong>The No Drift Method</strong> is a simple framework built into 12 Weeks to War to keep progress moving through stressful weeks, imperfect schedules, and missed momentum.
-        </div>
+</form>
+```
 
-        <div class="nd-panel">
-          <ul class="nd-list">
-            <li><span class="num">01</span><span>Train the full plan when the week is solid</span></li>
-            <li><span class="num">02</span><span>Use fallback targets when life gets heavy</span></li>
-            <li><span class="num">03</span><span>Re-enter fast instead of restarting from scratch</span></li>
-          </ul>
-        </div>
-      </div>
-    </section>
+  </div>
+</section>
 
-    <section id="forwho">
-      <div class="ey">Right Fit</div>
-      <h2 class="disp">Who This<br /><span class="it">Is For.</span></h2>
-      <div class="fw-g">
-        <div class="fw-c">
-          <div class="fw-label">This is built for you if —</div>
-          <ul class="fw-list">
-            <li><span class="fm">✓</span> You're a busy father or working man with limited time to train</li>
-            <li><span class="fm">✓</span> You want to cut body fat and build a lean, athletic physique</li>
-            <li><span class="fm">✓</span> You're serious about structure and willing to track honestly</li>
-            <li><span class="fm">✓</span> You want something custom, not recycled generic programming</li>
-            <li><span class="fm">✓</span> You're ready to be held accountable and do your part</li>
-          </ul>
-        </div>
+<!-- FOOTER -->
 
-        <div class="fw-c">
-          <div class="fw-label">This is not for you if —</div>
-          <ul class="fw-list">
-            <li><span class="fm" style="color:var(--rule)">✕</span> You want a quick fix with no real work required</li>
-            <li><span class="fm" style="color:var(--rule)">✕</span> You're unwilling to track food, weight, and check-ins consistently</li>
-            <li><span class="fm" style="color:var(--rule)">✕</span> You'll blame the plan instead of your execution</li>
-            <li><span class="fm" style="color:var(--rule)">✕</span> You're looking for motivation content, not a coaching system</li>
-            <li><span class="fm" style="color:var(--rule)">✕</span> You can't commit to 12 honest weeks</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+<footer class="ft">
+  <div class="fl-logo">12 Weeks <span>to War</span></div>
+  <div class="fl-mid">1:1 Coaching for Busy Men</div>
+  <div class="fl-r">Founding Rate: $497 &nbsp;·&nbsp; 5 Spots Only</div>
+</footer>
 
-    <section id="process">
-      <div class="ey">How It Works</div>
-      <h2 class="disp">The<br /><span class="it">Process.</span></h2>
-      <div class="pr-rows">
-        <div class="pr"><div class="pr-nw"><span class="pr-n">01</span></div><div class="pr-b"><div class="pr-h">Apply</div><div class="pr-t">Fill out the application clearly and honestly. Good answers make a better plan.</div></div></div>
-        <div class="pr"><div class="pr-nw"><span class="pr-n">02</span></div><div class="pr-b"><div class="pr-h">Review &amp; Confirm</div><div class="pr-t">I review your application and confirm fit. No pitch call.</div></div></div>
-        <div class="pr"><div class="pr-nw"><span class="pr-n">03</span></div><div class="pr-b"><div class="pr-h">Onboard</div><div class="pr-t">Submit starting metrics, photos, and schedule details. Your plan gets built around real life.</div></div></div>
-        <div class="pr"><div class="pr-nw"><span class="pr-n">04</span></div><div class="pr-b"><div class="pr-h">Execute</div><div class="pr-t">Train, track, and check in weekly. I review, adjust, and keep the standard clear.</div></div></div>
-        <div class="pr"><div class="pr-nw"><span class="pr-n">05</span></div><div class="pr-b"><div class="pr-h">Build Momentum</div><div class="pr-t">You finish 12 weeks leaner, stronger, and more consistent, with a system you can actually hold.</div></div></div>
-      </div>
-    </section>
+<script defer>
+  function toggle(head) {
+    head.closest('.fsec').classList.toggle('open');
+  }
 
-    <section id="pricing">
-      <div class="ey">Investment</div>
-      <h2 class="disp">One Offer.<br /><span class="it">No Upsells.</span></h2>
-      <div class="px-g">
-        <div class="pc">
-          <div class="pc-badge">Founding Client Rate</div>
-          <div class="pc-amt"><sup>$</sup>497</div>
-          <div class="pc-per">One payment &nbsp;·&nbsp; Full 12 weeks</div>
-          <ul class="pc-list">
-            <li>Custom 12-week training program</li>
-            <li>Custom macro and nutrition targets</li>
-            <li>Cardio and step strategy</li>
-            <li>No Drift fallback and re-entry rules</li>
-            <li>Weekly check-in review and adjustments</li>
-            <li>Weekly 1:1 coaching call</li>
-            <li>Direct message support throughout</li>
-            <li>Onboarding and starting strategy</li>
-          </ul>
-          <a href="#apply" class="btn-p">Apply for a Founding Spot →</a>
-          <p class="pc-note">This rate closes after 5 clients.</p>
-        </div>
+  // Form submit
+  document.getElementById('appForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const btn = this.querySelector('.btn-sub');
+    btn.textContent = 'Application Submitted ✓';
+    btn.style.background = '#3a4728';
+    btn.style.cursor = 'default';
+    btn.disabled = true;
+  });
 
-        <div class="px-r">
-          <p>You are not paying for a generic PDF. You are paying for <strong>custom programming, weekly accountability, and direct review of your progress</strong>.</p>
-          <p>The founding rate exists while the first wave of results is being built. After that, pricing moves with proof and demand.</p>
-          <ul class="ms">
-            <li class="m"><span class="m-l">Founding Rate (Now)</span><span class="m-v now">$497</span></li>
-            <li class="m"><span class="m-l">After 5 Clients</span><span class="m-v">$697</span></li>
-            <li class="m"><span class="m-l">Full Rate</span><span class="m-v">$997+</span></li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section id="apply">
-      <div class="ap-g">
-        <div class="ap-side">
-          <div class="ey">The Application</div>
-          <h2 class="disp" style="font-size:clamp(34px,3.8vw,52px); margin-bottom:24px;">Let's See<br />If You're<br /><span class="it">Ready.</span></h2>
-          <p>This takes around 10 minutes. Fill it out clearly and honestly.</p>
-          <p>No pitch call. You apply, I review, and I reach out if it is a fit.</p>
-          <p><strong>Every question has a purpose.</strong> This is how the plan gets built around your actual life.</p>
-          <div class="ap-note">Only 5 founding spots at $497. Once those are filled, the rate moves to $697.</div>
-        </div>
-
-        <form class="fs" id="appForm" action="#" method="POST" novalidate>
-          <div class="fsec open">
-            <div class="fsec-h" onclick="toggleSection(this)" role="button" tabindex="0" aria-expanded="true">
-              <div class="fsec-hl"><span class="fsec-n">01</span><span class="fsec-name">Core Info</span></div>
-              <span class="fsec-tog">+</span>
-            </div>
-            <div class="fsec-b">
-              <div class="fr">
-                <div class="ff"><label for="full_name">Full Name *</label><input id="full_name" type="text" name="full_name" placeholder="John Smith" required /></div>
-                <div class="ff"><label for="email">Email Address *</label><input id="email" type="email" name="email" placeholder="john@email.com" required /></div>
-              </div>
-              <div class="fr">
-                <div class="ff"><label for="instagram">Instagram Handle</label><input id="instagram" type="text" name="instagram" placeholder="@yourhandle" /></div>
-                <div class="ff"><label for="age">Age *</label><input id="age" type="number" name="age" placeholder="34" required /></div>
-              </div>
-              <div class="fr three">
-                <div class="ff"><label for="height">Height</label><input id="height" type="text" name="height" placeholder="5'11&quot;" /></div>
-                <div class="ff"><label for="weight">Weight (lbs)</label><input id="weight" type="number" name="weight" placeholder="195" /></div>
-                <div class="ff"><label for="waist">Waist (in)</label><input id="waist" type="number" name="waist" placeholder="36" /></div>
-              </div>
-              <div class="fr">
-                <div class="ff"><label for="goal_weight">Goal Weight / Target BF%</label><input id="goal_weight" type="text" name="goal_weight" placeholder="175 lbs / ~12%" /></div>
-                <div class="ff"><label for="occupation">Occupation</label><input id="occupation" type="text" name="occupation" placeholder="Operations Manager" /></div>
-              </div>
-              <div class="fr one">
-                <div class="ff">
-                  <label for="activity_level">Daily Activity Level Outside Training</label>
-                  <select id="activity_level" name="activity_level">
-                    <option value="">Select one</option>
-                    <option>Sedentary — desk job, mostly sitting</option>
-                    <option>Lightly active — some walking/standing</option>
-                    <option>Moderately active — on my feet often</option>
-                    <option>Very active — physical job or highly active lifestyle</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="fsec">
-            <div class="fsec-h" onclick="toggleSection(this)" role="button" tabindex="0" aria-expanded="false">
-              <div class="fsec-hl"><span class="fsec-n">02</span><span class="fsec-name">Goals</span></div>
-              <span class="fsec-tog">+</span>
-            </div>
-            <div class="fsec-b">
-              <div class="fr">
-                <div class="ff">
-                  <label for="primary_goal">Primary Goal *</label>
-                  <select id="primary_goal" name="primary_goal" required>
-                    <option value="">Select one</option>
-                    <option>Cut body fat — main priority</option>
-                    <option>Build muscle and strength</option>
-                    <option>Both — body recomposition</option>
-                    <option>Improve overall fitness and discipline</option>
-                  </select>
-                </div>
-                <div class="ff">
-                  <label for="secondary_goal">Secondary Goal</label>
-                  <select id="secondary_goal" name="secondary_goal">
-                    <option value="">Select one</option>
-                    <option>Improve energy and performance</option>
-                    <option>Build discipline and consistency</option>
-                    <option>Improve athletic performance</option>
-                    <option>Better health markers</option>
-                    <option>Set a better example for my kids</option>
-                  </select>
-                </div>
-              </div>
-              <div class="fr one"><div class="ff"><label for="why_now">Why now? What made you apply today? *</label><textarea id="why_now" name="why_now" placeholder="What matters most right now?" required></textarea></div></div>
-              <div class="fr one"><div class="ff"><label for="obstacle">Biggest obstacle right now</label><textarea id="obstacle" name="obstacle" placeholder="What has been getting in the way?"></textarea></div></div>
-              <div class="fr one"><div class="ff"><label for="success_vision">What does a successful 12 weeks look like?</label><textarea id="success_vision" name="success_vision" placeholder="Describe the outcome you want by week 12."></textarea></div></div>
-            </div>
-          </div>
-
-          <div class="fsec">
-            <div class="fsec-h" onclick="toggleSection(this)" role="button" tabindex="0" aria-expanded="false">
-              <div class="fsec-hl"><span class="fsec-n">03</span><span class="fsec-name">Training</span></div>
-              <span class="fsec-tog">+</span>
-            </div>
-            <div class="fsec-b">
-              <div class="fr">
-                <div class="ff">
-                  <label for="training_exp">Training Experience</label>
-                  <select id="training_exp" name="training_exp">
-                    <option value="">Select one</option>
-                    <option>Beginner — less than 1 year consistent</option>
-                    <option>Intermediate — 1–3 years</option>
-                    <option>Experienced — 3+ years, solid foundation</option>
-                    <option>Trained before but been off a while</option>
-                  </select>
-                </div>
-                <div class="ff">
-                  <label for="training_days">Days Available Per Week</label>
-                  <select id="training_days" name="training_days">
-                    <option value="">Select one</option>
-                    <option>2 days</option>
-                    <option>3 days</option>
-                    <option>4 days</option>
-                    <option>5 days</option>
-                  </select>
-                </div>
-              </div>
-              <div class="fr">
-                <div class="ff">
-                  <label for="session_length">Avg Session Length</label>
-                  <select id="session_length" name="session_length">
-                    <option value="">Select one</option>
-                    <option>30–40 minutes</option>
-                    <option>45–60 minutes</option>
-                    <option>60–75 minutes</option>
-                    <option>75+ minutes</option>
-                  </select>
-                </div>
-                <div class="ff">
-                  <label for="training_location">Training Location</label>
-                  <select id="training_location" name="training_location">
-                    <option value="">Select one</option>
-                    <option>Commercial gym — full equipment</option>
-                    <option>Home gym — decent setup</option>
-                    <option>Home gym — limited equipment</option>
-                    <option>Bodyweight only</option>
-                  </select>
-                </div>
-              </div>
-              <div class="fr one"><div class="ff"><label for="current_routine">Current routine / what you've been doing</label><textarea id="current_routine" name="current_routine" placeholder="Even if inconsistent, write it out."></textarea></div></div>
-              <div class="fr one"><div class="ff"><label for="injuries">Injuries, pain points, or limitations</label><textarea id="injuries" name="injuries" placeholder="Anything I need to know before programming?"></textarea></div></div>
-              <div class="fr">
-                <div class="ff"><label for="steps">Current Daily Step Count</label><input id="steps" type="text" name="steps" placeholder="~5,000/day" /></div>
-                <div class="ff">
-                  <label for="cardio_pref">Cardio Preference</label>
-                  <select id="cardio_pref" name="cardio_pref">
-                    <option value="">Select one</option>
-                    <option>Steady-state — walking, incline treadmill</option>
-                    <option>HIIT / conditioning</option>
-                    <option>Cycling or rowing</option>
-                    <option>Outdoor running</option>
-                    <option>No preference</option>
-                    <option>I dislike cardio</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="fsec">
-            <div class="fsec-h" onclick="toggleSection(this)" role="button" tabindex="0" aria-expanded="false">
-              <div class="fsec-hl"><span class="fsec-n">04</span><span class="fsec-name">Nutrition</span></div>
-              <span class="fsec-tog">+</span>
-            </div>
-            <div class="fsec-b">
-              <div class="fr">
-                <div class="ff">
-                  <label for="eating_style">Current Eating Style</label>
-                  <select id="eating_style" name="eating_style">
-                    <option value="">Select one</option>
-                    <option>No structure — eating whatever's available</option>
-                    <option>Generally healthy but inconsistent</option>
-                    <option>Tracking calories/macros already</option>
-                    <option>Following a specific diet</option>
-                  </select>
-                </div>
-                <div class="ff">
-                  <label for="meals_per_day">Meals Per Day</label>
-                  <select id="meals_per_day" name="meals_per_day">
-                    <option value="">Select one</option>
-                    <option>1–2 meals</option>
-                    <option>2–3 meals</option>
-                    <option>3–4 meals</option>
-                    <option>4–5 meals</option>
-                    <option>Varies widely</option>
-                  </select>
-                </div>
-              </div>
-              <div class="fr one"><div class="ff"><label for="food_prefs">Food Preferences and Dislikes</label><textarea id="food_prefs" name="food_prefs" placeholder="What do you usually eat? What do you avoid?"></textarea></div></div>
-              <div class="fr">
-                <div class="ff"><label for="restrictions">Food Restrictions / Allergies</label><input id="restrictions" type="text" name="restrictions" placeholder="Lactose intolerant, no shellfish, etc." /></div>
-                <div class="ff">
-                  <label for="alcohol">Alcohol Intake</label>
-                  <select id="alcohol" name="alcohol">
-                    <option value="">Select one</option>
-                    <option>None</option>
-                    <option>1–2 drinks/week</option>
-                    <option>3–5 drinks/week</option>
-                    <option>6–10 drinks/week</option>
-                    <option>10+ drinks/week</option>
-                  </select>
-                </div>
-              </div>
-              <div class="fr one"><div class="ff"><label for="weekend_eating">Weekend Eating Challenges</label><textarea id="weekend_eating" name="weekend_eating" placeholder="Where does weekend structure usually break?"></textarea></div></div>
-              <div class="fr">
-                <div class="ff"><label for="calories">Est. Current Calories</label><input id="calories" type="text" name="calories" placeholder="~2,400/day or 'no idea'" /></div>
-                <div class="ff"><label for="macros">Est. Current Macros</label><input id="macros" type="text" name="macros" placeholder="~180P / 220C / 80F or 'not tracking'" /></div>
-              </div>
-              <div class="fr one"><div class="ff"><label for="food_log">Full day of eating — yesterday or a typical day *</label><textarea id="food_log" name="food_log" style="min-height:116px" placeholder="Breakfast, lunch, dinner, snacks, drinks." required></textarea></div></div>
-            </div>
-          </div>
-
-          <div class="fsec">
-            <div class="fsec-h" onclick="toggleSection(this)" role="button" tabindex="0" aria-expanded="false">
-              <div class="fsec-hl"><span class="fsec-n">05</span><span class="fsec-name">Lifestyle &amp; Recovery</span></div>
-              <span class="fsec-tog">+</span>
-            </div>
-            <div class="fsec-b">
-              <div class="fr three">
-                <div class="ff">
-                  <label for="sleep">Avg Sleep Per Night</label>
-                  <select id="sleep" name="sleep">
-                    <option value="">Select</option>
-                    <option>Under 5 hours</option>
-                    <option>5–6 hours</option>
-                    <option>6–7 hours</option>
-                    <option>7–8 hours</option>
-                    <option>8+ hours</option>
-                  </select>
-                </div>
-                <div class="ff"><label for="stress">Stress Level (1–10)</label><input id="stress" type="number" name="stress" placeholder="7" min="1" max="10" /></div>
-                <div class="ff"><label for="kids">Number of Kids</label><input id="kids" type="number" name="kids" placeholder="2" min="0" /></div>
-              </div>
-              <div class="fr">
-                <div class="ff">
-                  <label for="work_schedule">Work Schedule</label>
-                  <select id="work_schedule" name="work_schedule">
-                    <option value="">Select one</option>
-                    <option>Standard office / 9–5</option>
-                    <option>Early mornings or long days</option>
-                    <option>Shift work / irregular hours</option>
-                    <option>Remote / flexible</option>
-                    <option>Travel-heavy role</option>
-                  </select>
-                </div>
-                <div class="ff">
-                  <label for="travel">Travel Frequency</label>
-                  <select id="travel" name="travel">
-                    <option value="">Select one</option>
-                    <option>Rarely or never</option>
-                    <option>A few times a year</option>
-                    <option>Monthly</option>
-                    <option>Frequent — weekly or more</option>
-                  </select>
-                </div>
-              </div>
-              <div class="fr">
-                <div class="ff">
-                  <label for="hard_time">Hardest Time for Compliance</label>
-                  <select id="hard_time" name="hard_time">
-                    <option value="">Select one</option>
-                    <option>Mornings — hard to train early</option>
-                    <option>Evenings — tired after work</option>
-                    <option>Weekends — structure falls apart</option>
-                    <option>Travel days</option>
-                    <option>No specific pattern</option>
-                  </select>
-                </div>
-                <div class="ff">
-                  <label for="home_support">Support at Home</label>
-                  <select id="home_support" name="home_support">
-                    <option value="">Select one</option>
-                    <option>Yes — partner is supportive</option>
-                    <option>Neutral — they don't interfere</option>
-                    <option>No — creates some friction</option>
-                    <option>Single / living alone</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="fsec">
-            <div class="fsec-h" onclick="toggleSection(this)" role="button" tabindex="0" aria-expanded="false">
-              <div class="fsec-hl"><span class="fsec-n">06</span><span class="fsec-name">Commitment</span></div>
-              <span class="fsec-tog">+</span>
-            </div>
-            <div class="fsec-b">
-              <div class="fr one">
-                <div class="ff">
-                  <label for="ready_plan">Ready to follow a structured plan for 12 weeks?</label>
-                  <select id="ready_plan" name="ready_plan">
-                    <option value="">Select one</option>
-                    <option>Yes — I'll follow the plan as written</option>
-                    <option>Mostly — I might push back on some things</option>
-                    <option>Not sure yet</option>
-                  </select>
-                </div>
-              </div>
-              <div class="fr one">
-                <div class="ff">
-                  <label for="willing_track">Willing to track food, weight, and check in weekly with full honesty?</label>
-                  <select id="willing_track" name="willing_track">
-                    <option value="">Select one</option>
-                    <option>Yes — I'll track consistently</option>
-                    <option>I'll try, but I've struggled before</option>
-                    <option>No — I don't want to track food</option>
-                  </select>
-                </div>
-              </div>
-              <div class="fr one"><div class="ff"><label for="fall_off">What usually causes you to fall off? *</label><textarea id="fall_off" name="fall_off" placeholder="What usually breaks your consistency?" required></textarea></div></div>
-              <div class="fr one"><div class="ff"><label for="other">Anything else I should know? (Optional)</label><textarea id="other" name="other" placeholder="Anything important not covered above."></textarea></div></div>
-            </div>
-          </div>
-
-          <div class="f-foot">
-            <p>Submitting this application does not commit you to anything. I review the application and reach out if it is a fit.</p>
-            <button type="submit" class="btn-sub">Submit Application</button>
-          </div>
-        </form>
-      </div>
-    </section>
-  </main>
-
-  <footer class="ft">
-    <div class="fl-logo">12 Weeks <span>to War</span></div>
-    <div class="fl-mid">1:1 Coaching for Busy Men</div>
-    <div class="fl-r">Built Around No Drift</div>
-  </footer>
-
-  <script defer>
-    function toggleSection(head) {
-      const sec = head.closest('.fsec');
-      const isOpen = sec.classList.toggle('open');
-      head.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    }
-
-    document.querySelectorAll('.fsec-h').forEach((head) => {
-      head.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          toggleSection(head);
-        }
-      });
+  // Scroll reveal
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if (en.isIntersecting) en.target.classList.add('vis');
     });
+  }, { threshold: 0.06 });
 
-    const form = document.getElementById('appForm');
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
+  document.querySelectorAll('.tr, .oc, .pr').forEach((el, i) => {
+    el.style.transitionDelay = (i % 4) * 80 + 'ms';
+    observer.observe(el);
+  });
 
-      if (!form.checkValidity()) {
-        form.reportValidity();
-        return;
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
-
-      const btn = this.querySelector('.btn-sub');
-      btn.textContent = 'Application Submitted ✓';
-      btn.style.background = getComputedStyle(document.documentElement).getPropertyValue('--success').trim();
-      btn.style.cursor = 'default';
-      btn.disabled = true;
     });
+  });
+</script>
 
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(en => {
-        if (en.isIntersecting) en.target.classList.add('vis');
-      });
-    }, { threshold: 0.06 });
-
-    document.querySelectorAll('.tr, .oc, .pr').forEach((el, i) => {
-      el.style.transitionDelay = (i % 4) * 80 + 'ms';
-      observer.observe(el);
-    });
-
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', e => {
-        const href = a.getAttribute('href');
-        if (!href || href === '#') return;
-
-        const target = document.querySelector(href);
-        if (target) {
-          e.preventDefault();
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      });
-    });
-  </script>
 </body>
 </html>
